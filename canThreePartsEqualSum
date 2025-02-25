@@ -1,0 +1,33 @@
+bool canThreePartsEqualSum(int* arr, int arrSize) 
+{
+    if (arrSize < 3) 
+    {
+        return false;
+    }
+    int count = 0;
+    for (int i = 0; i < arrSize; i++) 
+    {
+        count += arr[i];
+    }
+    if (count % 3 != 0) 
+    {
+        return false;
+    }
+    int target = count /3;
+    int Sum = 0;
+    int c = 0;
+    for (int i = 0; i < arrSize; i++) 
+    {
+        Sum += arr[i];
+        if (Sum ==target) 
+        {
+            c++;
+            Sum = 0;
+            if (c == 2 && i< arrSize-1) 
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
